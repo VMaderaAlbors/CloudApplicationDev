@@ -36,7 +36,7 @@ function deleteArticle() {
         .catch(error => {
             console.error("Error deleting article:", error);
             // Handle error
-            renderHeader(error);
+
         });
 }
 
@@ -44,3 +44,5 @@ function deleteArticle() {
 function navigateToEdit() {
     location.href = `edit_article.html?id=${data.id}`;
 }
+
+module.exports = { loadData, renderData, deleteArticle, navigateToEdit };

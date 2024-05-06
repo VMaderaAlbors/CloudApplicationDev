@@ -15,6 +15,7 @@ async function loadData() {
 }
 const header = document.createElement('h2');
 function renderHeader(error) {
+    let message;
 
     if (error === "success") {
         header.setAttribute("class", "success-message");
@@ -22,7 +23,7 @@ function renderHeader(error) {
 
     } else if (error) {
         header.setAttribute("class", "error-message");
-        message = "Error updating article- " + error;
+        message = error;
 
     } else {
         message = "Edit Article";
@@ -99,7 +100,8 @@ function handleSubmit() {
         })
         .catch(error => {
             console.error("Error updating article:", error);
-            renderHeader(error);
+            renderHeader("Error updating article");
 
         });
 }
+module.exports = { loadData, renderHeader, renderForm, handleSubmit };
