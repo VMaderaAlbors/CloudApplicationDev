@@ -1,0 +1,24 @@
+services:
+  rails_articles_app:
+    build:
+      context: ./rails_articles_app
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: Cascabel123!
+      MYSQL_DATABASE: rails_react_app_development
+      MYSQL_USER: rails_user
+      MYSQL_PASSWORD: rails_password
+    ports:
+      - "3306:3306"
+  articles_react:
+    build:
+      context: ./articles_react
+      dockerfile: Dockerfile
+    ports:
+      - "3001:4000"
